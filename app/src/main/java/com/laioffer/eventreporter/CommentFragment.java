@@ -6,16 +6,16 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
+import android.widget.GridView;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class EventFragment extends Fragment {
+public class CommentFragment extends Fragment {
 
 
-    public EventFragment() {
+    public CommentFragment() {
         // Required empty public constructor
     }
 
@@ -23,9 +23,10 @@ public class EventFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_event, container, false);
-        ListView listView = (ListView) view.findViewById(R.id.event_list);
-        listView.setAdapter(new EventAdapter(getActivity()));
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_comment, container, false);
+        GridView gridView = (GridView) view.findViewById(R.id.comment_grid);
+        gridView.setAdapter(new EventAdapter(getActivity()));
         return view;
     }
 

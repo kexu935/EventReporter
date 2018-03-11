@@ -1,5 +1,8 @@
 package com.laioffer.eventreporter;
 
+
+import android.content.res.Configuration;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,16 +15,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        Log.e("Life cycle test", "We are at onCreate()");
-//
-//        // Get ListView object from xml.
-//        ListView eventListView = (ListView) findViewById(R.id.event_list);
-//
-//        // Initialize an adapter.
-//        EventAdapter adapter = new EventAdapter(this);
-//
-//        // Assign adapter to ListView.
-//        eventListView.setAdapter(adapter);
+// Show different fragments based on screen size.
+        if (findViewById(R.id.fragment_container) != null) {
+            Fragment fragment = isTablet() ? new  CommentFragment() : new EventFragment();
+            getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, fragment).commit();
+        }
+    }
+
+    private boolean isTablet() {
+        return (getApplicationContext().getResources().getConfiguration().screenLayout &
+                Configuration.SCREENLAYOUT_SIZE_MASK) >=
+                Configuration.SCREENLAYOUT_SIZE_LARGE;
     }
 
     /**
