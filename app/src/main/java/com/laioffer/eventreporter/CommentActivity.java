@@ -72,7 +72,9 @@ public class CommentActivity extends AppCompatActivity {
                         child("commentNumber").setValue(comments.size());
                 commentAdapter.setComments(comments);
 
-
+                mDatabaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
                 DataSnapshot eventSnapshot = dataSnapshot.child("events");
                 for (DataSnapshot noteDataSnapshot : eventSnapshot.getChildren()) {
                     Event event = noteDataSnapshot.getValue(Event.class);
@@ -94,7 +96,12 @@ public class CommentActivity extends AppCompatActivity {
             }
         });
     }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+    }
     private void sendComment(final String eventId) {
         String description = mEditTextComment.getText().toString();
         if (description.equals("")) {
