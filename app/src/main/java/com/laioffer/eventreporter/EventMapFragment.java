@@ -143,9 +143,7 @@ public class EventMapFragment extends Fragment implements OnMapReadyCallback, Go
                     Marker mker = googleMap.addMarker(marker);
                     mker.setTag(event);
                 }
-
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 //TODO: do something
@@ -182,11 +180,14 @@ public class EventMapFragment extends Fragment implements OnMapReadyCallback, Go
                 @Override
                 protected void onPostExecute(Bitmap  bitmap) {
                     super.onPostExecute(bitmap);
-                    marker.setIcon(BitmapDescriptorFactory.fromBitmap(bitmap));
-                    marker.setTitle(event.getTitle());
+                    if (bitmap != null) {
+                        marker.setIcon(BitmapDescriptorFactory.fromBitmap(bitmap));
+                        marker.setTitle(event.getTitle());
+                    }
                 }
             }.execute();
             return false;
+
         }
     }
 }
