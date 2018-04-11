@@ -7,10 +7,10 @@ admin.initializeApp(functions.config().firebase);
 //
 // ...
 exports.sendNotification = functions.database.ref('/events/{pushId}')
-       .onWrite(event => {
+       .onWrite((change, context) => {
 
            // Grab the current value of what was written to the Realtime Database.
-           var eventSnapshot = event.data.val();
+           var eventSnapshot = change.after.val();
 
            var topic = "android";
            var payload = {
