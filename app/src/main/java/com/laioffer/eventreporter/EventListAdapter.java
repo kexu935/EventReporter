@@ -35,8 +35,8 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private Context context;
 
     //TYPE_ITEM and TYPE_ADS are identification of item type
-//TYPE_ITEM = event
-//TYPE_ADS = ads
+    //TYPE_ITEM = event
+    //TYPE_ADS = ads
     private static final int TYPE_ITEM = 0;
     private static final int TYPE_ADS = 1;
 
