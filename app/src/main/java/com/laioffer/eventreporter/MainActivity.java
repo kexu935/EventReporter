@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mSubmitButton;
     private Button mRegisterButton;
     private DatabaseReference mDatabase;
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         mPasswordEditText = (EditText) findViewById(R.id.editTextPassword);
         mSubmitButton = (Button) findViewById(R.id.submit);
         mRegisterButton = (Button) findViewById(R.id.register);
-        AdView mAdView = (AdView) findViewById(R.id.adView);
+        mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
