@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,8 +47,8 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     //Keep position of the ads in the list\
     private Map<Integer, Object> map = new HashMap<Integer, Object>();
 
-    private static final String ADMOB_AD_UNIT_ID = "ca-app-pub-3940256099942544/2247696110";
-    private static final String ADMOB_APP_ID = "ca-app-pub-3940256099942544~3347511713";
+    private static String ADMOB_AD_UNIT_ID;
+    private static String ADMOB_APP_ID;
 
     /**
      * Constructor for EventListAdapter
@@ -55,6 +56,8 @@ public class EventListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
      * @param events events that are showing on screen
      */
     public EventListAdapter(List<Event> events, final Context context) {
+        ADMOB_AD_UNIT_ID = context.getString(R.string.admob_ad_unit_id);
+        ADMOB_APP_ID = context.getString(R.string.admob_app_id);
         databaseReference = FirebaseDatabase.getInstance().getReference();
         this.context = context;
         inflater = (LayoutInflater) context.getSystemService(
